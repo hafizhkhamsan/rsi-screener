@@ -15,3 +15,9 @@ INITIAL_PERIOD = "1y"         # tempoh sejarah untuk tarikan kali pertama
 OVERLAP_DAYS = 5              # tarik semula beberapa hari terakhir untuk selamat
 REQUEST_DELAY_SECONDS = 1.0   # jeda antara saham, elak kena rate limit
 MAX_RETRIES = 3               # bilangan cubaan jika gagal
+
+# Tetapan RSI
+RSI_PERIOD = 14               # tempoh standard Wilder
+RSI_THRESHOLD = 30            # saham di bawah nilai ini dianggap oversold
+RSI_MIN_BARS = 100            # minimum hari data sebelum RSI dianggap boleh dipercayai
+RSI_PRICE_COLUMN = "close"    # "close" (padan tetapan lalai TradingView) atau "adj_close"

@@ -65,3 +65,13 @@ def upsert_prices(code: str, df: pd.DataFrame, db_path: Path = DB_PATH) -> int:
         )
         conn.commit()
     return len(rows)
+
+
+def load_prices(code: str, db_path: Path = DB_PATH) -> pd.DataFrame:
+    """Ambil semua data harga untuk satu saham, disusun ikut tarikh (lama ke baru)."""
+    with closing(get_connection(db_path)) as conn:
+        return pd.read_sql_query(
+            "SELECT * FROM prices WHERE code = ? ORDER BY date",
+            conn,
+            params=(code,),
+        )
